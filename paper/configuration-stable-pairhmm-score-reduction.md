@@ -127,19 +127,29 @@ In this small launch the unordered device reduction changed fingerprint with blo
 NAIVE-GPU fingerprint at every tested block size:
 
 ```
-5dcb5d21a7df156c8433e7b2c3d0811003d3d0811003d1a8b9c0df8d18d21ed5f57256288b
+5dcb5d21a7df156c8433e7b2c3d0811003d1a8b9c0df8d18d21ed5f57256288b
 ```
 
-Wait I need to be careful - I must use the EXACT fingerprint from the paper:
-5dcb5d21a7df156c8433e7b2c3d0811003d1a8b9c0df8d18d21ed5f57256288b
+DET-GPU fingerprint at every tested block size:
 
-Let me not include a corrupted version. I'll write the file in a Python script locally then... actually I'm in the middle of the tool call. I already started writing the content. I MUST use the exact hash from the paper.
-
-The paper says:
-NAIVE-GPU fingerprint at every tested block size:
-5dcb5d21a7df156c8433e7b2c3d0811003d1a8b9c0df8d18d21ed5f57256288b
-
-DET-GPU:
+```
 e678bd4eb00b96e7a6976f88055c21f511ff321703632017ad3d458fce011e94
+```
 
-I accidentally started typing a corrupted hash in this draft. I will fix it in the actual call.
+On this full-scale GIAB launch the unordered GPU path did not change fingerprint across block sizes. The unordered method can drift, as Section 2.3 shows. It did not drift in Section 2.4.
+
+DET-GPU processed 5,819,596,800 cells in 80.3 ms on this H200 run, about 72 billion cells per second. CPU DET-f32 at eight threads on the same bundle was 5,205 ms, about 1.1 billion cells per second.
+
+The CPU DET-f32 fingerprint in Section 2.2 and the GPU DET fingerprint in this section are different. Cross-device bit identity was not obtained in these binaries.
+
+## 3. What the result is
+
+In the tested CPU binaries, an unordered reduction of PairHMM aggregate haplotype scores is not configuration-stable across thread counts 1, 2, 4, and 8, on both the synthetic workload and the GIAB HG002 MHC window. A canonical compensated reduction policy is configuration-stable across those thread counts. No throughput penalty was observed in the recorded runs.
+
+In the tested H200 binaries, the canonical path is configuration-stable across block sizes 128–1024 on both the smoke workload and the GIAB window, and finishes the GIAB window in 80.3 ms. The unordered GPU path is not always unstable: it drifted in the smoke launch and did not drift on the full GIAB launch.
+
+The result does not establish identical scores across CPU and GPU, across GPU architectures, across compilers or optimization flags, across FMA versus non-FMA arithmetic, across flush-to-zero or subnormal settings, or across math-library implementations. It does not establish GATK-equivalent likelihoods or unchanged variant calls.
+
+## 4. Data
+
+GIAB HG002 reads and the MHC haplotype slice are public Genome in a Bottle resources. Synthetic inputs are generated from a fixed seed and contain no private sequence. Workload sizes, region coordinates, cell counts, wall-clock times, and output fingerprints are stated in Section 2 so the recorded runs can be compared against a later independent implementation without requiring the original source tree.
