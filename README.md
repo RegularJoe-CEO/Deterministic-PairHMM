@@ -1,11 +1,15 @@
 # Deterministic-PairHMM
 
-Public paper and binaries for a **configuration-stable** GATK-style PairHMM aggregate haplotype-score reduction.
+Public paper and **closed evaluation binaries** for a configuration-stable GATK-style PairHMM aggregate haplotype-score reduction.
 
-When you reduce per-read PairHMM log-probabilities into a haplotype score vector, unordered parallel or atomic addition can change the bits of that vector when thread count or GPU block size changes. This repo publishes a measured alternative: the same forward scores, reduced under a canonical compensated reduction policy, with SHA-256 fingerprints of the score vector.
+This is **not** the LuxiEdge engine. The binaries let you run the published workload and check the SHA-256 fingerprint. They do not include, and do not license, LuxiEdge, LuxiQuant, or the Luxi Inference Engine. Source is not in this repository.
+
+When you reduce per-read PairHMM log-probabilities into a haplotype score vector, unordered parallel or atomic addition can change the bits of that vector when thread count or GPU block size changes. The paper reports a measured alternative: the same forward scores, reduced under a canonical compensated reduction policy.
 
 **Paper:** [Configuration-Stable PairHMM Score Reduction](paper/configuration-stable-pairhmm-score-reduction.md)  
 Eric Waller, LuxiEdge. Measurements 17 June 2026. This document 28 August 2026.
+
+**License:** [LICENSE](LICENSE) — all rights reserved. Evaluation use of the binaries only.
 
 ## What this is
 
@@ -19,10 +23,11 @@ Eric Waller, LuxiEdge. Measurements 17 June 2026. This document 28 August 2026.
 - Not a demonstration of GATK-equivalent likelihoods.
 - Not a claim of identical bits across CPU and GPU.
 - Not a genotype caller. No VCF is emitted. Production GATK per-read gap vectors were not used.
+- Not open source. Not the LuxiEdge engine.
 
 ## Binaries
 
-Closed evaluation binaries will live in [`bin/`](bin/). Until they land, the paper is the public artifact.
+Closed evaluation binaries live in [`bin/`](bin/). A Linux x86_64 CPU build is landing next. GPU and macOS builds are separate artifacts.
 
 ## Contact
 

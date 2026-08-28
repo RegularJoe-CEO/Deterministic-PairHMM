@@ -1,0 +1,17 @@
+Copyright (c) 2026 Eric Waller / LuxiEdge
+
+All rights reserved.
+
+This repository publishes a paper and closed evaluation binaries for a
+configuration-stable PairHMM aggregate haplotype-score reduction.
+
+You may download and run the published binaries for evaluation and to
+compare SHA-256 fingerprints against the paper. That permission does not
+include source code, and it does not include any license to the LuxiEdge
+engine, LuxiQuant, the Luxi Inference Engine, or any other Luxi product.
+
+No source code is conveyed by this repository. Running a binary does not
+make this software open source.
+
+THE SOFTWARE AND BINARIES ARE PROVIDED "AS IS", WITHOUT WARRANTY OF ANY
+KIND.
