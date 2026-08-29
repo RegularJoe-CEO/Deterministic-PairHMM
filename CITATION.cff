@@ -1,0 +1,41 @@
+cff-version: 1.2.0
+message: If you use this work, please cite the methods note below.
+type: article
+title: "Configuration-Stable PairHMM Score Reduction"
+abstract: >
+  Measured configuration stability of a GATK-style PairHMM aggregate
+  haplotype-score reduction under a canonical compensated policy.
+  Unordered parallel reduction changed the haplotype-score fingerprint
+  with thread count or GPU block size. The canonical policy did not,
+  on the recorded workloads. This repository publishes the methods note
+  and a closed Linux evaluation binary. It does not publish source code
+  and does not license the LuxiEdge engine.
+authors:
+  - family-names: Waller
+    given-names: Eric
+    email: e@ewaller.com
+    affiliation: LuxiEdge
+date-released: "2026-08-28"
+url: "https://github.com/RegularJoe-CEO/Deterministic-PairHMM"
+repository-code: "https://github.com/RegularJoe-CEO/Deterministic-PairHMM"
+keywords:
+  - PairHMM
+  - haplotype score
+  - floating-point reduction
+  - configuration stability
+  - Genome in a Bottle
+license: LicenseRef-Proprietary
+contact:
+  - email: e@ewaller.com
+    name: Eric Waller
+preferred-citation:
+  type: article
+  title: "Configuration-Stable PairHMM Score Reduction"
+  authors:
+    - family-names: Waller
+      given-names: Eric
+      affiliation: LuxiEdge
+  year: 2026
+  month: 8
+  url: "https://github.com/RegularJoe-CEO/Deterministic-PairHMM/blob/main/paper/configuration-stable-pairhmm-score-reduction.md"
+  notes: "Methods note and closed evaluation binary. No source. Not a HaplotypeCaller replacement."
