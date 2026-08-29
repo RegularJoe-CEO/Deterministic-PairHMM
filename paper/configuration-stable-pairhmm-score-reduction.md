@@ -4,7 +4,7 @@ Measured stability of an aggregate haplotype-score vector under a canonical comp
 
 Eric Waller  
 LuxiEdge  
-Measurements recorded 17 June 2026 · this document 28 August 2026
+Measurements recorded 17 June 2026 · this document 28 August 2026 · citation metadata 28 August 2026
 
 ## Abstract
 
@@ -13,6 +13,24 @@ In a GATK-style PairHMM forward kernel, each read–haplotype pair yields a log-
 This document reports a measured alternative: the same forward scores are reduced under a canonical compensated reduction policy. On a 5.12-billion-cell synthetic workload and on 5.82 billion cells of public GIAB HG002 MHC reads, the unordered CPU reduction produced different SHA-256 output fingerprints at different thread counts. The canonical policy produced one fingerprint at every tested thread count. No throughput penalty was observed in the recorded runs. On an NVIDIA H200, the canonical GPU path processed the same GIAB cell count in 80.3 ms and kept one fingerprint across block sizes 128, 256, 512, and 1024.
 
 Scope of the result: configuration-stable aggregate haplotype scores in the tested binaries and arithmetic environments. This is not a HaplotypeCaller replacement, not a demonstration of GATK-equivalent likelihoods, and not a claim of identical bits across CPU and GPU.
+
+
+## How to cite
+
+Waller, E. (2026). *Configuration-Stable PairHMM Score Reduction*. LuxiEdge. https://github.com/RegularJoe-CEO/Deterministic-PairHMM
+
+```
+@misc{waller2026pairhmm,
+  author       = {Waller, Eric},
+  title        = {Configuration-Stable {PairHMM} Score Reduction},
+  year         = {2026},
+  month        = aug,
+  howpublished = {https://github.com/RegularJoe-CEO/Deterministic-PairHMM},
+  note         = {Methods note and closed Linux evaluation binary. No source.}
+}
+```
+
+Correspondence: Eric Waller, LuxiEdge, e@ewaller.com.
 
 ## 1. What was measured
 
@@ -153,3 +171,48 @@ The result does not establish identical scores across CPU and GPU, across GPU ar
 ## 4. Data
 
 GIAB HG002 reads and the MHC haplotype slice are public Genome in a Bottle resources. Synthetic inputs are generated from a fixed seed and contain no private sequence. Workload sizes, region coordinates, cell counts, wall-clock times, and output fingerprints are stated in Section 2 so the recorded runs can be compared against a later independent implementation without requiring the original source tree.
+
+## 5. Reproducibility of the published binary
+
+Independent check of this result does not require engine source.
+
+The Linux x86_64 evaluation binary in `bin/` is a closed artifact. Evaluation use is limited to running that binary and comparing output fingerprints to this document (see LICENSE).
+
+```
+chmod +x pairhmm-determinism-linux-x86_64
+shasum -a 256 -c pairhmm-determinism-linux-x86_64.sha256
+./pairhmm-determinism-linux-x86_64 --synthetic
+```
+
+`--synthetic` is the 5.12-billion-cell workload of Section 2.1. If DET-f32 prints
+
+```
+ee49d42b77b331a3d03960491ad27b91a34211da11712f3dd66273d906df767d
+```
+
+the reduction on that run matches the recorded June 17 measurement. If it does not, the mismatch is the result. Correspondence: e@ewaller.com.
+
+The published Linux binary was built 28 August 2026. The times and fingerprints in Section 2 are the 17 June 2026 recorded runs. GPU and macOS binaries are not in this repository.
+
+`--giab` requires a local `data/giab_mhc` directory assembled from public GIAB resources. Those reads are not redistributed here.
+
+## 6. Data availability
+
+GIAB HG002 (NA24385) Illumina 300× WGS reads and the MHC haplotype slice are public Genome in a Bottle resources [2]. Synthetic inputs are generated from a fixed seed inside the closed binary and contain no private sequence. Workload sizes, region coordinates, cell counts, wall-clock times, and output fingerprints are stated in Section 2 so a later independent implementation can be compared without the original source tree.
+
+## 7. Software and intellectual property
+
+This repository does not contain source code. Running the binary does not convey source, and it does not license the LuxiEdge engine, LuxiQuant, the Luxi Inference Engine, or any other Luxi product.
+
+What is public here is the measurement, the named reduction *policy* (unordered parallel reduction versus a canonical compensated reduction in fixed read-index order), and a closed evaluation binary that prints the fingerprints. Compensation of floating-point sums is a public numerical technique [3]. The LuxiEdge engine that produced the recorded runs is not published and is not licensed by this document.
+
+This is not a HaplotypeCaller [1], not a GATK-equivalent likelihood claim, and not a genotype caller.
+
+## References
+
+1. Poplin, R., Ruano-Rubio, V., DePristo, M. A., Fennell, T. J., Carneiro, M. O., Van der Auwera, G. A., Kling, D. E., Gauthier, L. D., Levy-Moonshine, A., Roazen, D., Shakir, K., Thibault, J., Chandran, S., Whelan, C., Lek, M., Gabriel, S., Daly, M. J., Neale, B., MacArthur, D. G., & Banks, E. (2018). Scaling accurate genetic variant discovery to tens of thousands of samples. *bioRxiv*. https://doi.org/10.1101/201178
+
+2. Zook, J. M., Catoe, D., McDaniel, J., Vang, L., Spies, N., Sidow, A., Weng, Z., Liu, Y., Mason, C. E., Alexander, N., Henaff, E., McIntyre, A. B. R., Chandramohan, D., Chen, F., Jaeger, E., Moshrefi, A., Pham, K., Stedman, W., Liang, T., … Salit, M. (2016). Extensive sequencing of seven human genomes to characterize benchmark reference materials. *Scientific Data, 3*, 160025. https://doi.org/10.1038/sdata.2016.25
+
+3. Kahan, W. (1965). Pracniques: further remarks on reducing truncation errors. *Communications of the ACM, 8*(1), 40. https://doi.org/10.1145/363707.363723
+
