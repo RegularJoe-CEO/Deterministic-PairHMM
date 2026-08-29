@@ -17,7 +17,7 @@ Scope of the result: configuration-stable aggregate haplotype scores in the test
 
 ## How to cite
 
-Waller, E. (2026). *Configuration-Stable PairHMM Score Reduction*. LuxiEdge. https://github.com/RegularJoe-CEO/Deterministic-PairHMM
+Waller, E. (2026). *Configuration-Stable PairHMM Score Reduction* (Version 1.0.0). Zenodo. https://doi.org/10.5281/zenodo.22152053
 
 ```
 @misc{waller2026pairhmm,
@@ -25,7 +25,9 @@ Waller, E. (2026). *Configuration-Stable PairHMM Score Reduction*. LuxiEdge. htt
   title        = {Configuration-Stable {PairHMM} Score Reduction},
   year         = {2026},
   month        = aug,
-  howpublished = {https://github.com/RegularJoe-CEO/Deterministic-PairHMM},
+  howpublished = {Zenodo},
+  doi          = {10.5281/zenodo.22152053},
+  url          = {https://doi.org/10.5281/zenodo.22152053},
   note         = {Methods note and closed Linux evaluation binary. No source.}
 }
 ```
