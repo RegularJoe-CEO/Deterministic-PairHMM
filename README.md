@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="docs/social-preview.png" alt="Lu(x)iEdge Deterministic PairHMM: same haplotype score at every thread count" width="100%">
+</p>
+
 # Deterministic-PairHMM
 
 Public paper and **closed evaluation binaries** for a configuration-stable GATK-style PairHMM aggregate haplotype-score reduction.
