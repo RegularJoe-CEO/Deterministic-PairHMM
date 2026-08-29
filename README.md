@@ -13,6 +13,24 @@ When you reduce per-read PairHMM log-probabilities into a haplotype score vector
 **Paper:** [Configuration-Stable PairHMM Score Reduction](paper/configuration-stable-pairhmm-score-reduction.md)  
 Eric Waller, LuxiEdge. Measurements 17 June 2026. This document 28 August 2026.
 
+
+## How to cite
+
+Waller, E. (2026). *Configuration-Stable PairHMM Score Reduction*. LuxiEdge. https://github.com/RegularJoe-CEO/Deterministic-PairHMM
+
+```bibtex
+@misc{waller2026pairhmm,
+  author       = {Waller, Eric},
+  title        = {Configuration-Stable {PairHMM} Score Reduction},
+  year         = {2026},
+  month        = aug,
+  howpublished = {https://github.com/RegularJoe-CEO/Deterministic-PairHMM},
+  note         = {Methods note and closed Linux evaluation binary. No source.}
+}
+```
+
+GitHub also exposes this via `CITATION.cff` (Cite this repository). A journal DOI is not minted yet. Correspondence: [e@ewaller.com](mailto:e@ewaller.com).
+
 **License:** [LICENSE](LICENSE) — all rights reserved. Evaluation use of the binaries only.
 
 ## What this is
@@ -38,6 +56,11 @@ Closed evaluation binaries live in [`bin/`](bin/).
 | [pairhmm-determinism-linux-x86_64](bin/pairhmm-determinism-linux-x86_64) | Linux x86_64 CPU | `ef7a33add60e86e729d981dfc2ef5556914cc3968727ffd5fdb3ade9131afc83` |
 
 This Linux build was made 28 August 2026. It is a closed evaluation binary, not engine source. GPU and macOS builds are separate artifacts.
+
+
+## Intellectual property
+
+The paper and the Linux binary are what is public. Source is not in this repository. This is not a license to the LuxiEdge engine.
 
 ## Contact
 
