@@ -15,6 +15,7 @@ authors:
     given-names: Eric
     email: e@ewaller.com
     affiliation: LuxiEdge
+version: "1.0.0"
 date-released: "2026-08-28"
 url: "https://github.com/RegularJoe-CEO/Deterministic-PairHMM"
 repository-code: "https://github.com/RegularJoe-CEO/Deterministic-PairHMM"
