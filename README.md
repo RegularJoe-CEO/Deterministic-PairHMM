@@ -16,7 +16,7 @@ Eric Waller, LuxiEdge. Measurements 17 June 2026. This document 28 August 2026.
 
 ## How to cite
 
-Waller, E. (2026). *Configuration-Stable PairHMM Score Reduction*. LuxiEdge. https://github.com/RegularJoe-CEO/Deterministic-PairHMM
+Waller, E. (2026). *Configuration-Stable PairHMM Score Reduction* (Version 1.0.0). Zenodo. https://doi.org/10.5281/zenodo.22152053
 
 ```bibtex
 @misc{waller2026pairhmm,
@@ -24,12 +24,14 @@ Waller, E. (2026). *Configuration-Stable PairHMM Score Reduction*. LuxiEdge. htt
   title        = {Configuration-Stable {PairHMM} Score Reduction},
   year         = {2026},
   month        = aug,
-  howpublished = {https://github.com/RegularJoe-CEO/Deterministic-PairHMM},
+  howpublished = {Zenodo},
+  doi          = {10.5281/zenodo.22152053},
+  url          = {https://doi.org/10.5281/zenodo.22152053},
   note         = {Methods note and closed Linux evaluation binary. No source.}
 }
 ```
 
-GitHub also exposes this via `CITATION.cff` (Cite this repository). A journal DOI is not minted yet. Correspondence: [e@ewaller.com](mailto:e@ewaller.com).
+Cite the DOI: [10.5281/zenodo.22152053](https://doi.org/10.5281/zenodo.22152053). GitHub also exposes this via `CITATION.cff`. Correspondence: [e@ewaller.com](mailto:e@ewaller.com).
 
 **License:** [LICENSE](LICENSE) — all rights reserved. Evaluation use of the binaries only.
 
