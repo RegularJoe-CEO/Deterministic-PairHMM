@@ -27,7 +27,13 @@ Eric Waller, LuxiEdge. Measurements 17 June 2026. This document 28 August 2026.
 
 ## Binaries
 
-Closed evaluation binaries live in [`bin/`](bin/). A Linux x86_64 CPU build is landing next. GPU and macOS builds are separate artifacts.
+Closed evaluation binaries live in [`bin/`](bin/).
+
+| File | Platform | SHA-256 |
+| --- | --- | --- |
+| [pairhmm-determinism-linux-x86_64](bin/pairhmm-determinism-linux-x86_64) | Linux x86_64 CPU | `ef7a33add60e86e729d981dfc2ef5556914cc3968727ffd5fdb3ade9131afc83` |
+
+This Linux build was made 28 August 2026. It is a closed evaluation binary, not engine source. GPU and macOS builds are separate artifacts.
 
 ## Contact
 
