@@ -60,6 +60,10 @@ Closed evaluation binaries live in [`bin/`](bin/).
 This Linux build was made 28 August 2026. It is a closed evaluation binary, not engine source. GPU and macOS builds are separate artifacts.
 
 
+## Upstream
+
+Upstream fix: a PairHMM global-banding bug in rust-bio that scored exact matches as impossible was fixed in [rust-bio PR #688](https://github.com/rust-bio/rust-bio/pull/688) (merged 16 September 2026; not yet in a rust-bio release).
+
 ## Intellectual property
 
 The paper and the Linux binary are what is public. Source is not in this repository. This is not a license to the LuxiEdge engine.
